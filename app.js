@@ -16,7 +16,16 @@ const path = require("path")
     app.engine("handlebars", handlebars.engine({defaultLayout:"main"}))
     app.set("view engine", "handlebars")
     // Mongoose
-        mongoose.connect("process.env.MONGODB_URI").then(()=>{
+
+const uri = "process.env.MONGODB_URI"
+        mongoose.connect(uri, {
+             useNewUrlParser: true,
+  useUnifiedTopology: true
+        })
+            
+            
+            
+            .then(()=>{
             console.log("conectado ao mongoDB")
         }).catch((erro)=>{
             console.log("Falha ao conectar ao banco de dados "+ erro)
@@ -38,3 +47,4 @@ app.listen(port, ()=>{
     console.log("Servidor Rodando")
 
 })
+
