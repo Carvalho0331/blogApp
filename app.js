@@ -16,7 +16,7 @@ const path = require("path")
     app.engine("handlebars", handlebars.engine({defaultLayout:"main"}))
     app.set("view engine", "handlebars")
     // Mongoose
-        mongoose.connect("mongodb+srv://salimo_carvalho:bOrbRtVatRnBmFI9@cluster0.zjvqxhy.mongodb.net/").then(()=>{
+        mongoose.connect("process.env.MONGODB_URI").then(()=>{
             console.log("conectado ao mongoDB")
         }).catch((erro)=>{
             console.log("Falha ao conectar ao banco de dados "+ erro)
@@ -36,4 +36,5 @@ app.use("/admin", admin)
 const port = process.env.PORT || 3000
 app.listen(port, ()=>{
     console.log("Servidor Rodando")
+
 })
